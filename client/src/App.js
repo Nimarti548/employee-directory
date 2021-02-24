@@ -1,6 +1,7 @@
 import './App.css';
 import Jumbotron from "./Components/Jumbotron/Jumbotron"
 import SearchBar from './Components/SearchBar/SearchBar';
+import Table from './Components/Table/Table';
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div className="container">
       <Jumbotron/>
       <SearchBar/>
+      <Table/>
     </div>
   );
 }
