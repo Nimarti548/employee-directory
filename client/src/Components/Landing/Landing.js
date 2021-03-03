@@ -6,21 +6,40 @@ import Table from "../Table/Table"
 
 const Landing = () => {
     const [emp, setEmp] = useState(null);
+    const [filteredEmp, setFilteredEmp] = useState([]);
 
-    useEffect(() => {
+
+
+    useEffect((emp) => {
         API.empResults(emp)
         .then((res) => {
             return res.data;
         })
-        .then((data) => setEmp(data.results))
+        .then((data) => { 
+          console.log(data);
+          const employees = data.results.map((employee) => {
+            return {
+              id: employee.login.uuid,
+              img: employee.picture.thumbnail,
+              name: `${employee.name.first} ${employee.name.last}`,
+              phone: employee.phone,
+              email: `${employee.email}`,
+              dob: employee.dob.age,
+            };
+          })
+          setEmp(employees);
+          setFilteredEmp(employees);
+        })
+
     }, [])
 
-    console.log(emp);
+    
+
     return (
       <div className="landing">
         <Jumbotron />
         <SearchBar />
-        {emp && <Table emp={emp} title="All Employees" />}
+        <Table employees={filteredEmp} title="All Employees" />
       </div>
     );
 }

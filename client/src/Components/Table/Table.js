@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Table = ({emp}) => {
+const Table = ({employees}) => {
     return (
       <table className="emp-table">
         <thead>
@@ -9,30 +9,24 @@ const Table = ({emp}) => {
             <th scope="col">Name</th>
             <th scope="col">Phone Number</th>
             <th scope="col">Email</th>
-            <th scope="col">DOB</th>
+            <th scope="col">Age</th>
           </tr>
         </thead>
-           {emp.map((employee) => (
-        <tbody className="emp-view" key={employee.uuid}>
-          <tr>
-            <td >
-                <img src={employee.picture.thumbnail} alt="employee" />
-            </td>
-            <td>
-                {employee.name.first} {employee.name.last}
-            </td>
-            <td>
-                {employee.phone} 
-            </td>
-            <td>
-                {employee.email} 
-            </td>
-            <td>
-                {employee.dob.age} 
-            </td>
-          </tr>
+        <tbody className="emp-view">
+        {employees.map((employee) => (
+            <tr key={employee.id}>
+              <td>
+                <img src={employee.img} alt="employee" />
+              </td>
+              <td>
+                {employee.name} 
+              </td>
+              <td>{employee.phone}</td>
+              <td>{employee.email}</td>
+              <td>{employee.dob}</td>
+            </tr>
+        ))}
         </tbody>
-           ))}
       </table>
     );
 }
