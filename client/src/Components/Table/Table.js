@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Table = () => {
+const Table = ({emp}) => {
     return (
-      <table class="table">
+      <table className="emp-table">
         <thead>
           <tr>
             <th scope="col">Photo</th>
@@ -12,15 +12,27 @@ const Table = () => {
             <th scope="col">DOB</th>
           </tr>
         </thead>
-        <tbody>
+           {emp.map((employee) => (
+        <tbody className="emp-view" key={employee.uuid}>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td >
+                <img src={employee.picture.thumbnail} alt="employee" />
+            </td>
+            <td>
+                {employee.name.first} {employee.name.last}
+            </td>
+            <td>
+                {employee.phone} 
+            </td>
+            <td>
+                {employee.email} 
+            </td>
+            <td>
+                {employee.dob.age} 
+            </td>
           </tr>
         </tbody>
+           ))}
       </table>
     );
 }
