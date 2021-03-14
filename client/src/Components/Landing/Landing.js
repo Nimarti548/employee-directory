@@ -20,9 +20,11 @@ const Landing = () => {
 
   const sortEmp = () => {
     filteredEmp.sort((a, b) => {
-          return a - b;
+          return (a - b);
         });
+        setSortEmployee(filteredEmp)
       }
+
   
 
     useEffect((emp) => {
